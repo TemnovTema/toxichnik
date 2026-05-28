@@ -47,7 +47,7 @@ export function ExhibitionUI({
       <button
         type="button"
         onClick={onToggleSound}
-        className="ui-button fixed bottom-8 right-8 z-20 font-serif text-[10px] tracking-[0.22em] text-[#6b6560] uppercase md:bottom-12 md:right-12"
+        className="ui-button fixed bottom-8 right-8 z-20 font-serif text-[13px] tracking-[0.06em] text-[#2a2824] md:bottom-12 md:right-12"
         aria-label={soundOn ? "Выключить звук" : "Включить звук"}
         aria-pressed={soundOn}
       >
