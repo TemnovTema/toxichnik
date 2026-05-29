@@ -44,7 +44,7 @@ export function MessageComposer({ onSend, disabled }: MessageComposerProps) {
     <>
       <form
         onSubmit={handleSubmit}
-        className="message-form flex min-w-0 flex-1 items-center gap-3"
+        className="message-form flex w-full items-center gap-3"
       >
         <label className="sr-only" htmlFor="toxic-message">
           Сообщение
@@ -60,7 +60,7 @@ export function MessageComposer({ onSend, disabled }: MessageComposerProps) {
           maxLength={180}
           autoComplete="off"
           enterKeyHint="send"
-          className="message-input min-w-0 flex-1 bg-transparent font-serif text-base leading-none tracking-[0.02em] text-[#2a2824] outline-none placeholder:text-[#8a847c] disabled:opacity-40 md:text-[13px]"
+          className="message-input min-w-0 w-[9.5rem] flex-1 bg-transparent font-serif text-base leading-none tracking-[0.02em] text-[#2a2824] outline-none placeholder:text-[#8a847c] disabled:opacity-40 sm:w-[11rem] md:w-[14rem] md:flex-none md:text-[13px]"
         />
         <button
           type="submit"
