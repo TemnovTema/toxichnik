@@ -44,7 +44,7 @@ export function MessageComposer({ onSend, disabled }: MessageComposerProps) {
     <>
       <form
         onSubmit={handleSubmit}
-        className="message-form fixed bottom-8 left-8 z-20 flex max-w-[min(74vw,380px)] items-end gap-3 md:bottom-12 md:left-12"
+        className="message-form flex min-w-0 flex-1 items-center gap-3"
       >
         <label className="sr-only" htmlFor="toxic-message">
           Сообщение
@@ -60,12 +60,12 @@ export function MessageComposer({ onSend, disabled }: MessageComposerProps) {
           maxLength={180}
           autoComplete="off"
           enterKeyHint="send"
-          className="message-input min-w-0 flex-1 bg-transparent font-serif text-base tracking-[0.02em] text-[#2a2824] outline-none placeholder:text-[#8a847c] disabled:opacity-40 md:text-[13px]"
+          className="message-input min-w-0 flex-1 bg-transparent font-serif text-base leading-none tracking-[0.02em] text-[#2a2824] outline-none placeholder:text-[#8a847c] disabled:opacity-40 md:text-[13px]"
         />
         <button
           type="submit"
           disabled={sending || disabled || !value.trim()}
-          className="ui-button message-submit shrink-0 font-serif text-base tracking-[0.06em] text-[#2a2824] disabled:opacity-35 md:text-[13px]"
+          className="ui-button message-submit shrink-0 font-serif text-[13px] leading-none tracking-[0.06em] text-[#2a2824] md:text-[13px]"
           onPointerDown={() => {
             inputRef.current?.blur();
           }}

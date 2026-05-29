@@ -121,10 +121,20 @@ body {
   opacity: 0.55;
 }
 
+.bottom-controls {
+  touch-action: manipulation;
+}
+
 .message-form {
   border-bottom: 1px solid rgba(42, 40, 36, 0.1);
   padding-bottom: 0.35rem;
   touch-action: manipulation;
+}
+
+.message-submit:disabled {
+  opacity: 1;
+  color: #2a2824;
+  cursor: default;
 }
 
 .message-input {

@@ -39,20 +39,22 @@ export function ExhibitionUI({
         купить
       </button>
 
-      <MessageComposer
-        onSend={onSendMessage}
-        disabled={!interactionEnabled}
-      />
+      <div className="bottom-controls fixed bottom-8 left-8 right-8 z-20 flex items-center gap-6 md:bottom-12 md:left-12 md:right-12">
+        <MessageComposer
+          onSend={onSendMessage}
+          disabled={!interactionEnabled}
+        />
 
-      <button
-        type="button"
-        onClick={onToggleSound}
-        className="ui-button fixed bottom-8 right-8 z-20 font-serif text-[13px] tracking-[0.06em] text-[#2a2824] md:bottom-12 md:right-12"
-        aria-label={soundOn ? "Выключить звук" : "Включить звук"}
-        aria-pressed={soundOn}
-      >
-        {soundOn ? "звук · вкл" : "звук · выкл"}
-      </button>
+        <button
+          type="button"
+          onClick={onToggleSound}
+          className="ui-button shrink-0 font-serif text-[13px] leading-none tracking-[0.06em] text-[#2a2824]"
+          aria-label={soundOn ? "Выключить звук" : "Включить звук"}
+          aria-pressed={soundOn}
+        >
+          {soundOn ? "звук · вкл" : "звук · выкл"}
+        </button>
+      </div>
     </>
   );
 }
