@@ -124,10 +124,16 @@ body {
 .message-form {
   border-bottom: 1px solid rgba(42, 40, 36, 0.1);
   padding-bottom: 0.35rem;
+  touch-action: manipulation;
 }
 
 .message-input {
   caret-color: rgba(42, 40, 36, 0.45);
+  touch-action: manipulation;
+}
+
+.message-submit {
+  touch-action: manipulation;
 }
 
 .send-note {

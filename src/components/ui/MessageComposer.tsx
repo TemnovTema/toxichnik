@@ -1,5 +1,6 @@
 "use client";
 
+import { resetMobileViewport } from "@/lib/resetMobileViewport";
 import { FormEvent, useRef, useState } from "react";
 
 type MessageComposerProps = {
@@ -17,11 +18,14 @@ export function MessageComposer({ onSend, disabled }: MessageComposerProps) {
   const [sending, setSending] = useState(false);
   const [flyingNote, setFlyingNote] = useState<FlyingNote | null>(null);
   const idRef = useRef(0);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const trimmed = value.trim();
     if (!trimmed || sending || disabled) return;
+
+    resetMobileViewport();
 
     setSending(true);
     idRef.current += 1;
@@ -32,6 +36,7 @@ export function MessageComposer({ onSend, disabled }: MessageComposerProps) {
       setValue("");
       setFlyingNote(null);
       setSending(false);
+      resetMobileViewport();
     }, 1400);
   };
 
@@ -45,6 +50,7 @@ export function MessageComposer({ onSend, disabled }: MessageComposerProps) {
           Сообщение
         </label>
         <input
+          ref={inputRef}
           id="toxic-message"
           type="text"
           value={value}
@@ -53,12 +59,16 @@ export function MessageComposer({ onSend, disabled }: MessageComposerProps) {
           disabled={sending || disabled}
           maxLength={180}
           autoComplete="off"
-          className="message-input min-w-0 flex-1 bg-transparent font-serif text-[13px] tracking-[0.02em] text-[#2a2824] outline-none placeholder:text-[#8a847c] disabled:opacity-40"
+          enterKeyHint="send"
+          className="message-input min-w-0 flex-1 bg-transparent font-serif text-base tracking-[0.02em] text-[#2a2824] outline-none placeholder:text-[#8a847c] disabled:opacity-40 md:text-[13px]"
         />
         <button
           type="submit"
           disabled={sending || disabled || !value.trim()}
-          className="ui-button shrink-0 font-serif text-[13px] tracking-[0.06em] text-[#2a2824] disabled:opacity-35"
+          className="ui-button message-submit shrink-0 font-serif text-base tracking-[0.06em] text-[#2a2824] disabled:opacity-35 md:text-[13px]"
+          onPointerDown={() => {
+            inputRef.current?.blur();
+          }}
         >
           {sending ? "…" : "отправить"}
         </button>
